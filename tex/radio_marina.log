@@ -1,0 +1,355 @@
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2012.1.15)  9 MAR 2012 22:43
+entering extended mode
+ %&-line parsing enabled.
+**radio_marina.tex
+(./radio_marina.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(./aastex.cls
+Document Class: aastex 2005/06/22 5.2/AAS markup document class
+Class aastex Info: Original \LaTeX2.09 style by Chris Biemesderfer (chris@seago
+at.com). Adapted to \LaTeXe by A. Ogawa (ogawa@teleport.com) on input line 83.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size12.clo
+File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\@emptytoks=\toks15
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(/usr/share/texmf/tex/latex/natbib/natbib.sty
+Package: natbib 2007/02/05 8.0 (PWD)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 602.
+\c@NAT@ctr=\count88
+)
+(/usr/share/texmf/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks16
+\verbatim@line=\toks17
+\verbatim@in@stream=\read1
+)
+\@slugcmmntwidth=\dimen105
+\abstract@box=\box26
+\c@editornote=\count89
+\c@cureqno=\count90
+\tnotemarkskip=\skip45
+\@abovenoteskip=\dimen106
+\pt@box=\box27
+\pt@width=\dimen107
+\pt@line=\count91
+\pt@column=\count92
+\pt@nlines=\count93
+\pt@ncol=\count94
+\pt@page=\count95
+\tabbaseskip=\dimen108
+\pt@tmpcapwidth=\dimen109
+\spew@tblnotesbox=\box28
+\restof@tblnotesbox=\box29
+\noteheight=\dimen110
+\pt@tabnoteminht=\dimen111
+\firsttabskip=\dimen112
+\captionbox=\box30
+\pt@reduceline=\dimen113
+\extra@vspace=\dimen114
+\c@plate=\count96
+\my@footins=\box31
+) (./radio_marina.aux
+(./intro.aux) (./obser.aux) (./datared.aux) (./dataana.aux) (./discuss.aux)
+(./conclu.aux) (./appen.aux))
+\openout1 = `radio_marina.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+
+AAS manuscript substyle, v5.2 <12 Dec 2003>.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 20.
+(/usr/share/texmf/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 20.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+)
+\openout2 = `intro.aux'.
+
+ (./intro.tex [1
+
+
+{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+] [3
+
+]
+<figs/inter.png, id=20, 811.03pt x 415.5525pt>
+File: figs/inter.png Graphic file (type png)
+ <use figs/inter.png>
+<figs/time.png, id=21, 609.27625pt x 457.71pt>
+File: figs/time.png Graphic file (type png)
+ <use figs/time.png>
+<figs/ele.jpg, id=22, 237.13594pt x 265.74281pt>
+File: figs/ele.jpg Graphic file (type jpg)
+ <use figs/ele.jpg> [4 <./figs/inter.png (PNG copy)>] [5 <./figs/time.png (PNG 
+copy)> <./figs/ele.jpg>]
+[6] [7] <figs/bas.png, id=38, 668.4975pt x 261.97874pt>
+File: figs/bas.png Graphic file (type png)
+ <use figs/bas.png>
+[8] [9 <./figs/bas.png (PNG copy)>]
+<figs/psun.png, id=47, 720.6925pt x 277.035pt>
+File: figs/psun.png Graphic file (type png)
+ <use figs/psun.png> [10 <./figs/psun.png (PNG copy)>]) [11]
+\openout2 = `obser.aux'.
+
+ (./obser.tex [12
+
+
+]
+<figs/1.png, id=57, 824.07875pt x 351.3125pt>
+File: figs/1.png Graphic file (type png)
+ <use figs/1.png> [13 <./figs/1.png (PNG copy)>] [14]) [15]
+\openout2 = `datared.aux'.
+
+ (./datared.tex
+<plots/sun1pow.pdf, id=69, 260.17201pt x 139.78122pt>
+File: plots/sun1pow.pdf Graphic file (type pdf)
+ <use plots/sun1pow.pdf>
+<plots/sun1powc.pdf, id=70, 260.17201pt x 146.0657pt>
+File: plots/sun1powc.pdf Graphic file (type pdf)
+ <use plots/sun1powc.pdf>
+<plots/sun2pow.pdf, id=71, 260.17201pt x 139.78122pt>
+File: plots/sun2pow.pdf Graphic file (type pdf)
+ <use plots/sun2pow.pdf>
+<plots/sun2powc.pdf, id=72, 260.17201pt x 146.0657pt>
+File: plots/sun2powc.pdf Graphic file (type pdf)
+ <use plots/sun2powc.pdf>
+<plots/sun3pow.pdf, id=73, 260.17201pt x 139.78122pt>
+File: plots/sun3pow.pdf Graphic file (type pdf)
+ <use plots/sun3pow.pdf>
+<plots/sun3powc.pdf, id=74, 260.17201pt x 146.0657pt>
+File: plots/sun3powc.pdf Graphic file (type pdf)
+ <use plots/sun3powc.pdf>
+<plots/sun4pow.pdf, id=75, 260.17201pt x 139.78122pt>
+File: plots/sun4pow.pdf Graphic file (type pdf)
+ <use plots/sun4pow.pdf>
+<plots/sun4powc.pdf, id=76, 260.17201pt x 146.0657pt>
+File: plots/sun4powc.pdf Graphic file (type pdf)
+ <use plots/sun4powc.pdf>
+<plots/sun5pow.pdf, id=77, 260.17201pt x 139.78122pt>
+File: plots/sun5pow.pdf Graphic file (type pdf)
+ <use plots/sun5pow.pdf>
+<plots/sun5powc.pdf, id=78, 260.17201pt x 139.95488pt>
+File: plots/sun5powc.pdf Graphic file (type pdf)
+
+<use plots/sun5powc.pdf> <plots/sat1pow.pdf, id=79, 260.17201pt x 139.78122pt>
+File: plots/sat1pow.pdf Graphic file (type pdf)
+
+<use plots/sat1pow.pdf> <plots/sat1powc.pdf, id=80, 260.17201pt x 142.43011pt>
+File: plots/sat1powc.pdf Graphic file (type pdf)
+
+<use plots/sat1powc.pdf> <plots/sat2pow.pdf, id=81, 260.17201pt x 139.78122pt>
+File: plots/sat2pow.pdf Graphic file (type pdf)
+
+<use plots/sat2pow.pdf> <plots/sat2powc.pdf, id=82, 260.17201pt x 142.43011pt>
+File: plots/sat2powc.pdf Graphic file (type pdf)
+
+<use plots/sat2powc.pdf> <plots/sat3pow.pdf, id=83, 260.17201pt x 139.78122pt>
+File: plots/sat3pow.pdf Graphic file (type pdf)
+
+<use plots/sat3pow.pdf> <plots/sat3powc.pdf, id=84, 260.17201pt x 142.43011pt>
+File: plots/sat3powc.pdf Graphic file (type pdf)
+
+<use plots/sat3powc.pdf> <plots/sat4pow.pdf, id=85, 260.17201pt x 139.78122pt>
+File: plots/sat4pow.pdf Graphic file (type pdf)
+
+<use plots/sat4pow.pdf> <plots/sat4powc.pdf, id=86, 260.17201pt x 142.43011pt>
+File: plots/sat4powc.pdf Graphic file (type pdf)
+
+<use plots/sat4powc.pdf> <plots/sat5pow.pdf, id=87, 260.17201pt x 139.78122pt>
+File: plots/sat5pow.pdf Graphic file (type pdf)
+
+<use plots/sat5pow.pdf> <plots/sat5powc.pdf, id=88, 260.17201pt x 141.50064pt>
+File: plots/sat5powc.pdf Graphic file (type pdf)
+
+<use plots/sat5powc.pdf>
+<plots/single/1.pdf, id=89, 260.17201pt x 145.48453pt>
+File: plots/single/1.pdf Graphic file (type pdf)
+
+<use plots/single/1.pdf>
+<plots/single/2.pdf, id=90, 260.17201pt x 145.48453pt>
+File: plots/single/2.pdf Graphic file (type pdf)
+
+<use plots/single/2.pdf>
+<plots/single/3.pdf, id=91, 260.17201pt x 147.39667pt>
+File: plots/single/3.pdf Graphic file (type pdf)
+
+<use plots/single/3.pdf>
+<plots/single/4.pdf, id=92, 260.17201pt x 147.39667pt>
+File: plots/single/4.pdf Graphic file (type pdf)
+
+<use plots/single/4.pdf>) [16
+
+
+] [17 <./plots/sun1pow.pdf> <./plots/sun1powc.pdf> <./plots/sun2pow.pdf> <./plo
+ts/sun2powc.pdf> <./plots/sun3pow.pdf> <./plots/sun3powc.pdf> <./plots/sun4pow.
+pdf> <./plots/sun4powc.pdf> <./plots/sun5pow.pdf> <./plots/sun5powc.pdf>] [18 <
+./plots/sat1pow.pdf> <./plots/sat1powc.pdf> <./plots/sat2pow.pdf> <./plots/sat2
+powc.pdf> <./plots/sat3pow.pdf> <./plots/sat3powc.pdf> <./plots/sat4pow.pdf> <.
+/plots/sat4powc.pdf> <./plots/sat5pow.pdf> <./plots/sat5powc.pdf>] [19 <./plots
+/single/1.pdf> <./plots/single/2.pdf> <./plots/single/3.pdf> <./plots/single/4.
+pdf>]
+\openout2 = `dataana.aux'.
+
+ (./dataana.tex
+<plots/single.pdf, id=485, 260.17201pt x 174.82915pt>
+File: plots/single.pdf Graphic file (type pdf)
+ <use plots/single.pdf>
+[20
+
+
+ <./plots/single.pdf>] [21]
+<plots/sinc3.png, id=502, 259.4493pt x 163.3302pt>
+File: plots/sinc3.png Graphic file (type png)
+ <use plots/sinc3.png>
+<plots/sinc1.pdf, id=503, 260.17201pt x 153.4272pt>
+File: plots/sinc1.pdf Graphic file (type pdf)
+ <use plots/sinc1.pdf>
+[22 <./plots/sinc3.png> <./plots/sinc1.pdf>]) [23]
+\openout2 = `discuss.aux'.
+
+ (./discuss.tex) [24
+
+
+]
+\openout2 = `conclu.aux'.
+
+
+(./conclu.tex [25
+
+
+] [26
+
+])
+\openout2 = `appen.aux'.
+
+ (./appen.tex
+Table 2 has been set to width 196.2287pt
+Table 3 has been set to width 391.62544pt
+Table 4 has been set to width 412.53009pt
+Table 5 has been set to width 428.58588pt
+<figs/voltage_curve.JPG, id=531, 2481.27pt x 1690.315pt>
+File: figs/voltage_curve.JPG Graphic file (type jpg)
+
+<use figs/voltage_curve.JPG>
+<code/errors.png, id=532, 1096.095pt x 556.0775pt>
+File: code/errors.png Graphic file (type png)
+ <use code/errors.png>
+Overfull \hbox (78.29117pt too wide) in paragraph at lines 105--106
+ [] 
+ []
+
+) [27
+
+
+
+ <./figs/voltage_curve.JPG>] [28] [29] [30 <./code/errors.png (PNG copy)>] (./r
+adio_marina.aux (./intro.aux) (./obser.aux) (./datared.aux) (./dataana.aux) (./
+discuss.aux) (./conclu.aux) (./appen.aux)) ) 
+Here is how much of TeX's memory you used:
+ 2027 strings out of 256216
+ 23826 string characters out of 1917072
+ 79347 words of memory out of 1500000
+ 5229 multiletter control sequences out of 10000+200000
+ 12550 words of font info for 49 fonts, out of 1200000 for 2000
+ 645 hyphenation exceptions out of 8191
+ 32i,10n,36p,1143b,302s stack positions out of 5000i,500n,6000p,200000b,15000s
+</usr/share/texmf/fonts/type1/blues
+ky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/bluesky
+/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/te
+xmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
+mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/texmf/fo
+nts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb><
+/usr/share/texmf/fonts/type1/bluesky/cm/cmti12.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmti8.pfb>
+Output written on radio_marina.pdf (30 pages, 3425799 bytes).
+PDF statistics:
+ 593 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+

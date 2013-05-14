@@ -1,0 +1,1570 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     68601,       1561]
+NotebookOptionsPosition[     66041,       1492]
+NotebookOutlinePosition[     66377,       1507]
+CellTagsIndexPosition[     66334,       1504]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "\[IndentingNewLine]", 
+   RowBox[{"SINGLE", " ", "DISH", " ", "ANALYSIS"}], "\[IndentingNewLine]", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"slopeVP", " ", "=", " ", "25"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Omega]", " ", "=", " ", 
+     RowBox[{"360", " ", 
+      RowBox[{"Degree", " ", "/", 
+       RowBox[{"(", 
+        RowBox[{"24", "*", "3600"}], ")"}]}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Lambda]", " ", "=", " ", "2.7"}], ";"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"TSATSIN", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</home/marina/Desktop/ana/SINGLE/SALOLDTXT4.txt\>\"", ",", 
+       "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"TSUNSIN", " ", "=", " ", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\</home/marina/Desktop/ana/SINGLE/SALOLDTXT2.txt\>\"", ",", 
+       "\"\<Table\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"REVERTING", " ", "NEGATIVE", " ", "VALUES"}], " ", "-", " ", 
+     RowBox[{"THIS", "  ", "IS", " ", "THE", " ", "VOLTAGE", " ", "DATA"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Tsatvolt", "=", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"TSATSIN", "[", 
+            RowBox[{"[", "a", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"Exp", "[", 
+           RowBox[{"2", "-", 
+            RowBox[{
+             RowBox[{"TSATSIN", "[", 
+              RowBox[{"[", "a", "]"}], "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", "2", ",", 
+          RowBox[{"Length", "[", "TSATSIN", "]"}]}], "}"}]}], "]"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Tsunvolt", "=", " ", 
+     RowBox[{"Transpose", " ", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"TSUNSIN", "[", 
+            RowBox[{"[", "a", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"Exp", "[", 
+           RowBox[{"2", "-", 
+            RowBox[{
+             RowBox[{"TSUNSIN", "[", 
+              RowBox[{"[", "a", "]"}], "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", "2", ",", 
+          RowBox[{"Length", "[", "TSUNSIN", "]"}]}], "}"}]}], "]"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"CONVERTING", " ", "POWER", " ", "FROM", " ", "VOLTAGE"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Fsatpow", "=", " ", 
+     RowBox[{"10", "^", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Tsatvolt", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "*", "slopeVP"}], ")"}], "+", 
+          "30"}], ")"}], "/", 
+        RowBox[{"(", "10", ")"}]}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Fsunpow", "=", " ", 
+     RowBox[{"10", "^", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Tsunvolt", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "*", "slopeVP"}], ")"}], "+", 
+          "30"}], ")"}], "/", 
+        RowBox[{"(", "10", ")"}]}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"NEW", " ", "TABLE", " ", "OF", " ", "POWER", " ", "SPECTRA"}], 
+    " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Tsatpow", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"j", ",", 
+         RowBox[{"Fsatpow", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", " ", 
+         RowBox[{"Length", "[", "Fsatpow", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Tsunpow", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"j", ",", 
+         RowBox[{"Fsunpow", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", " ", 
+         RowBox[{"Length", "[", "Fsunpow", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "CALCULATING", " ", "PMAX", " ", "AND", " ", "PMIN", " ", "AND", " ", 
+     "CENTER"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "sat", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ClearAll", "[", "Psatmaxt", "]"}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"ClearAll", "[", "Psatmax", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ClearAll", "[", "Psatminleft", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ClearAll", "[", "Psatminright", "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Psatmaxt", "=", 
+     RowBox[{"Floor", "[", 
+      RowBox[{"Median", "[", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Position", "[", 
+         RowBox[{"Fsatpow", ",", 
+          RowBox[{"Max", "[", "Fsatpow", "]"}]}], "]"}], "]"}], "]"}], 
+      "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Psatmax", "=", 
+     RowBox[{"Fsatpow", "[", 
+      RowBox[{"[", "Psatmaxt", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\n", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"j", "=", "Psatmaxt"}], ",", 
+      RowBox[{"j", ">", "20"}], ",", 
+      RowBox[{"--", "j"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Fsatpow", "[", 
+           RowBox[{"[", 
+            RowBox[{"j", "-", "1"}], "]"}], "]"}], ">", 
+          RowBox[{"Fsatpow", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Psatminleft", "=", "j"}], ";", 
+          RowBox[{"Break", "[", "]"}]}], ",", "\[IndentingNewLine]", 
+         "False"}], "]"}], ";"}]}], "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"j", "=", "Psatmaxt"}], ",", 
+      RowBox[{"j", "<", 
+       RowBox[{"Length", "[", "Tsatpow", "]"}]}], ",", 
+      RowBox[{"++", "j"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Fsatpow", "[", 
+           RowBox[{"[", 
+            RowBox[{"j", "+", "1"}], "]"}], "]"}], ">", 
+          RowBox[{"Fsatpow", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Psatminright", "=", "j"}], ";", 
+          RowBox[{"Break", "[", "]"}]}], ",", "\[IndentingNewLine]", 
+         "False"}], "]"}], ";"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "sun", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ClearAll", "[", "Psunmaxt", "]"}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"ClearAll", "[", "Psunmax", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ClearAll", "[", "Psunminleft", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ClearAll", "[", "Psunminright", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Psunmaxt", "=", 
+     RowBox[{"Floor", "[", 
+      RowBox[{"Median", "[", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Position", "[", 
+         RowBox[{"Fsunpow", ",", 
+          RowBox[{"Max", "[", "Fsunpow", "]"}]}], "]"}], "]"}], "]"}], 
+      "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Psunmax", "=", 
+     RowBox[{"Fsunpow", "[", 
+      RowBox[{"[", "Psunmaxt", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"j", "=", "Psunmaxt"}], ",", " ", 
+      RowBox[{"j", ">", "20"}], ",", " ", 
+      RowBox[{"--", "j"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Fsunpow", " ", "[", 
+           RowBox[{"[", 
+            RowBox[{"j", "-", "1"}], "]"}], "]"}], ">", 
+          RowBox[{"Fsunpow", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Psunminleft", "=", " ", "j"}], ";", " ", 
+          RowBox[{"Break", "[", "]"}]}], ",", "\[IndentingNewLine]", 
+         "False"}], "]"}], ";"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"j", "=", "Psunmaxt"}], ",", " ", 
+      RowBox[{"j", "<", 
+       RowBox[{"Length", "[", "Tsunpow", "]"}]}], ",", " ", 
+      RowBox[{"++", "j"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Fsunpow", "[", 
+           RowBox[{"[", 
+            RowBox[{"j", "+", "1"}], "]"}], "]"}], ">", 
+          RowBox[{"Fsunpow", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Psunminright", " ", "=", " ", "j"}], ";", " ", 
+          RowBox[{"Break", "[", "]"}]}], ",", "\[IndentingNewLine]", 
+         "False"}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Psatmin", "=", 
+     RowBox[{"Mean", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Fsunpow", "[", 
+         RowBox[{"[", 
+          RowBox[{"Psatminleft", "+", "20"}], "]"}], "]"}], ",", 
+        RowBox[{"Fsunpow", "[", 
+         RowBox[{"[", 
+          RowBox[{"Psatminright", "+", "20"}], "]"}], "]"}]}], "}"}], "]"}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Psunmin", "=", 
+     RowBox[{"Mean", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Fsunpow", "[", 
+         RowBox[{"[", 
+          RowBox[{"Psunminleft", "+", "20"}], "]"}], "]"}], ",", 
+        RowBox[{"Fsunpow", "[", 
+         RowBox[{"[", 
+          RowBox[{"Psunminright", "+", "20"}], "]"}], "]"}]}], "}"}], "]"}]}],
+     ";"}], "\n", 
+   RowBox[{
+    RowBox[{"vsat", "  ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "Psatmin"}], "+", "Psatmax"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"Psatmin", "+", "Psatmax"}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"vsun", "  ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "Psunmin"}], "+", "Psunmax"}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"Psunmin", "+", "Psunmax"}], ")"}]}]}], " ", ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"REMOVING", " ", "UNNECESSARY", " ", "POINTS"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "sat", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Tsat", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Tsatpow", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", 
+         RowBox[{"Psatmaxt", "-", "satcut"}], ",", " ", 
+         RowBox[{"Psatmaxt", "+", " ", "satcut"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Ffftsat", "=", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Fourier", "[", "Tsat", "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"Tsatpow", ",", 
+     RowBox[{"Background", "\[Rule]", "LightYellow"}], ",", 
+     RowBox[{"FillingStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{
+        RowBox[{"Opacity", "[", "0.7", "]"}], ",", "Red"}], "]"}]}], ",", 
+     RowBox[{"Filling", "\[Rule]", "Axis"}], ",", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Time (0.1 s)\>\"", ",", "\"\<  P(t) (mW)\>\""}], "}"}]}], 
+     ",", 
+     RowBox[{"PlotLabel", "\[Rule]", "\"\<SAT Single Dish \>\""}], ",", 
+     RowBox[{"LabelStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Bold", ",", "Medium"}], "]"}]}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"Tsat", ",", 
+     RowBox[{"Background", "\[Rule]", "LightYellow"}], ",", 
+     RowBox[{"FillingStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{
+        RowBox[{"Opacity", "[", "0.7", "]"}], ",", "Red"}], "]"}]}], ",", 
+     RowBox[{"Filling", "\[Rule]", "Axis"}], ",", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Time (0.1 s)\>\"", ",", "\"\< P(t) (mW)\>\""}], "}"}]}], 
+     ",", 
+     RowBox[{"PlotLabel", "\[Rule]", "\"\<SAT - Single Dish\>\""}], " ", ",", 
+     
+     RowBox[{"LabelStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Bold", ",", "Medium"}], "]"}]}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "sun", " ", "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"Tsun", " ", "=", " ", 
+     RowBox[{"Table", "[", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Tsunpow", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}], ",", " ", 
+       RowBox[{"{", " ", 
+        RowBox[{"k", ",", " ", 
+         RowBox[{"Psunmaxt", "-", "suncut"}], ",", " ", 
+         RowBox[{"Psunmaxt", "+", " ", "suncut"}]}], "}"}]}], "]"}]}], " ", 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Ffftsun", "=", " ", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Fourier", "[", "Tsun", "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"Tsunpow", ",", "   ", 
+     RowBox[{"Background", "\[Rule]", "LightYellow"}], ",", " ", 
+     RowBox[{"FillingStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{
+        RowBox[{"Opacity", "[", "0.7", "]"}], ",", "Red"}], "]"}]}], ",", 
+     RowBox[{"Filling", "->", "Axis"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"AxesLabel", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Time (0.1 s)\>\"", ",", "\"\<  P(t) (mW)\>\""}], "}"}]}], 
+     ",", " ", 
+     RowBox[{"PlotLabel", "\[Rule]", "\"\<SUN - Single Dish\>\""}], ",", 
+     RowBox[{"LabelStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Bold", ",", "Medium"}], "]"}]}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"Tsun", ",", "   ", 
+     RowBox[{"Background", "\[Rule]", "LightYellow"}], ",", " ", 
+     RowBox[{"FillingStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{
+        RowBox[{"Opacity", "[", "0.7", "]"}], ",", "Red"}], "]"}]}], ",", 
+     RowBox[{"Filling", "->", "Axis"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"AxesLabel", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Time (0.1 s)\>\"", ",", "\"\< P(t) (mW)\>\""}], "}"}]}], 
+     ",", " ", 
+     RowBox[{"PlotLabel", "\[Rule]", "\"\<SUN - Single Dish\>\""}], ",", 
+     RowBox[{"LabelStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Bold", ",", "Medium"}], "]"}]}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "And", " ", "the", " ", "resulting", " ", "profile", " ", "is", " ", 
+      "the", " ", "quotient", " ", "of", " ", "the", " ", "two", " ", 
+      "transforms"}], ",", " ", 
+     RowBox[{
+     "transformed", " ", "back", " ", "into", " ", "position", " ", 
+      "space"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Fnorm", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"Ffftsun", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], 
+        RowBox[{"Ffftsat", "[", 
+         RowBox[{"[", "k", "]"}], "]"}]], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", 
+         RowBox[{"Length", "[", "Tsun", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ListLinePlot", "[", 
+    RowBox[{"Fnorm", ",", "   ", 
+     RowBox[{"Background", "\[Rule]", "LightYellow"}], ",", " ", 
+     RowBox[{"FillingStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{
+        RowBox[{"Opacity", "[", "0.7", "]"}], " ", ",", " ", "Red"}], "]"}]}],
+      ",", "\[IndentingNewLine]", 
+     RowBox[{"AxesLabel", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<freq\>\"", ",", "\"\<  FFT\>\""}], "}"}]}], ",", " ", 
+     RowBox[{
+     "PlotLabel", "\[Rule]", "\"\<Single Dish Fourier Compoent Sun/Sat\>\""}],
+      ",", 
+     RowBox[{"LabelStyle", "\[Rule]", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"Bold", ",", "Medium"}], "]"}]}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.54017514041747*^9, 3.54017519320389*^9}, 
+   3.54017529071024*^9, {3.540177115400194*^9, 3.540177288037671*^9}, {
+   3.540177346676162*^9, 3.540177355967303*^9}, {3.540177460636572*^9, 
+   3.540177531201516*^9}, {3.540177561883259*^9, 3.540177789251963*^9}, {
+   3.540177844375408*^9, 3.540177925450431*^9}, {3.540177966650935*^9, 
+   3.540177983946567*^9}, {3.540178075677938*^9, 3.540178110968038*^9}, {
+   3.540178140985876*^9, 3.540178150880131*^9}, {3.540178244130664*^9, 
+   3.540178324434361*^9}, {3.540178396071105*^9, 3.540178427215343*^9}, {
+   3.54017862541726*^9, 3.540178650696537*^9}, {3.540178701929902*^9, 
+   3.540178845906759*^9}, {3.540178876979313*^9, 3.540179222452416*^9}, {
+   3.540179259438396*^9, 3.540179315769745*^9}, {3.54017943469106*^9, 
+   3.540179566095657*^9}, {3.540179624543051*^9, 3.540179702161462*^9}, {
+   3.540179786021642*^9, 3.540179806713777*^9}, {3.540179851829698*^9, 
+   3.540180242177844*^9}, {3.540180293121166*^9, 3.540180330077372*^9}, {
+   3.540180363747832*^9, 3.540180430140744*^9}, {3.540180464129145*^9, 
+   3.540180556026237*^9}, {3.540180609876534*^9, 3.540180736162327*^9}, {
+   3.540180790162916*^9, 3.540180828290669*^9}, {3.54018086148558*^9, 
+   3.540180919555465*^9}, {3.54018098292539*^9, 3.540181131033659*^9}, {
+   3.540181201516527*^9, 3.540181337722072*^9}, {3.540181370701983*^9, 
+   3.540181426732927*^9}, {3.540181472632502*^9, 3.540181610871351*^9}, {
+   3.540181655979884*^9, 3.540181657592892*^9}, {3.540181699762077*^9, 
+   3.540181726466668*^9}, {3.540181845682617*^9, 3.540181898016026*^9}, {
+   3.54018197827*^9, 3.540182147017908*^9}, {3.540182185981303*^9, 
+   3.540182214772906*^9}, {3.540182256942943*^9, 3.540182549686443*^9}, {
+   3.540182603532861*^9, 3.540182898449736*^9}, {3.540182951998869*^9, 
+   3.540182966734862*^9}, {3.540183044434101*^9, 3.540183050220343*^9}, 
+   3.540183156888562*^9, {3.540183192075031*^9, 3.540183310056626*^9}, {
+   3.54018335658032*^9, 3.540183423671798*^9}, {3.540183479444401*^9, 
+   3.540183678147839*^9}, {3.54018371702406*^9, 3.540183719493149*^9}, {
+   3.540183755499619*^9, 3.540183794536563*^9}, {3.540183826202423*^9, 
+   3.540183932993693*^9}, {3.540184001756484*^9, 3.540184002126345*^9}, {
+   3.540184046948803*^9, 3.540184128680851*^9}, {3.540184165783366*^9, 
+   3.540184179227456*^9}, {3.540184285381176*^9, 3.540184342382294*^9}, {
+   3.540184378120975*^9, 3.540184381247522*^9}, {3.540184491540424*^9, 
+   3.540184506867966*^9}, {3.540184573661021*^9, 3.540184585497738*^9}, {
+   3.540184619498863*^9, 3.540184973805165*^9}, {3.540185026354344*^9, 
+   3.540185149625845*^9}, {3.540185195228113*^9, 3.540185213997201*^9}, {
+   3.540185252805648*^9, 3.540185283342151*^9}, {3.540185332646322*^9, 
+   3.540185338686349*^9}, {3.54018537039015*^9, 3.540185400085176*^9}, {
+   3.540185454577953*^9, 3.540185543812793*^9}, {3.540185771679705*^9, 
+   3.540185853795522*^9}, {3.540185903392696*^9, 3.540185941812026*^9}, {
+   3.540185997471892*^9, 3.540186110552776*^9}, 3.540186141762164*^9, {
+   3.540186183872436*^9, 3.540186313080016*^9}, {3.540186354205915*^9, 
+   3.54018635599146*^9}, {3.540186393350036*^9, 3.540186444658276*^9}, {
+   3.54018656915154*^9, 3.540186741281696*^9}, {3.540186836709535*^9, 
+   3.540186936368952*^9}, {3.540187052485569*^9, 3.540187053192635*^9}, {
+   3.540187089461687*^9, 3.540187112862276*^9}, {3.540187159949966*^9, 
+   3.540187175084407*^9}, {3.540187219866168*^9, 3.540187316813313*^9}, {
+   3.540187423461056*^9, 3.540187425219723*^9}, 3.54018749295615*^9, {
+   3.540187532501481*^9, 3.540187640355248*^9}, {3.540187688563067*^9, 
+   3.540187720316381*^9}, {3.540187766664334*^9, 3.540187867430066*^9}, {
+   3.540187989857034*^9, 3.540188033491989*^9}, {3.540188071228084*^9, 
+   3.540188186477874*^9}, {3.540188228530775*^9, 3.540188438591916*^9}, 
+   3.540188522431276*^9, {3.540188618881424*^9, 3.540188971343145*^9}, 
+   3.540189115140022*^9, {3.540189173597715*^9, 3.54018918037438*^9}, {
+   3.540189210912871*^9, 3.540189245773791*^9}, 3.540189276535847*^9, {
+   3.540189329866281*^9, 3.540189373838659*^9}, {3.540189430169883*^9, 
+   3.540189457049931*^9}, {3.540189550378884*^9, 3.540189637954452*^9}, {
+   3.540189704262238*^9, 3.540189840872477*^9}, {3.540189878178213*^9, 
+   3.5401899222124*^9}, {3.540190037321245*^9, 3.540190050190743*^9}, {
+   3.540190109016116*^9, 3.540190201937805*^9}, {3.54019024570515*^9, 
+   3.540190380337778*^9}, {3.540190468443592*^9, 3.540190482577268*^9}, {
+   3.540190592917865*^9, 3.540190648728556*^9}, {3.540190699351213*^9, 
+   3.5401907031324*^9}, {3.540190742961204*^9, 3.540190965888455*^9}, {
+   3.540190999004624*^9, 3.540191035850469*^9}, {3.540191135892176*^9, 
+   3.540191275815272*^9}, {3.540191331248282*^9, 3.540191474766151*^9}, {
+   3.540191521723575*^9, 3.54019154842243*^9}, 3.540191661691955*^9, {
+   3.540204270924282*^9, 3.540204326523266*^9}, {3.540204366567799*^9, 
+   3.540204374602224*^9}, 3.540204421885463*^9, {3.540204547713241*^9, 
+   3.540204623273257*^9}, {3.54020466283424*^9, 3.54020466564865*^9}, {
+   3.540204697174728*^9, 3.540204761643643*^9}, {3.540204798251863*^9, 
+   3.540204873768207*^9}, {3.540204912294474*^9, 3.540204966325837*^9}, {
+   3.540205031602156*^9, 3.540205085207794*^9}, {3.540205115538727*^9, 
+   3.540205353607298*^9}, {3.540205385225571*^9, 3.540205652060831*^9}, {
+   3.540205686628854*^9, 3.540205748944976*^9}, {3.540205786848907*^9, 
+   3.54020581741906*^9}, {3.540205861194699*^9, 3.540205912597183*^9}, {
+   3.540205957929449*^9, 3.540206060788794*^9}, {3.540224658404384*^9, 
+   3.540225044808773*^9}, {3.540225120450399*^9, 3.54022514380052*^9}, {
+   3.540225186558352*^9, 3.540225267035525*^9}, {3.540225373123616*^9, 
+   3.540225394088139*^9}, {3.540225541363269*^9, 3.540225558555111*^9}, {
+   3.54022577123461*^9, 3.540225938234455*^9}, 3.540226040081313*^9, {
+   3.540226253794595*^9, 3.540226359232333*^9}, {3.540316540413299*^9, 
+   3.54031672748501*^9}, {3.54031676366373*^9, 3.54031677767558*^9}, {
+   3.540317155692042*^9, 3.540317302265352*^9}, {3.540318066402931*^9, 
+   3.540318099280556*^9}, {3.540337078145334*^9, 3.540337090137317*^9}}],
+
+Cell[BoxData["2.7`"], "Output",
+ CellChangeTimes->{
+  3.540205362219764*^9, 3.540205402653493*^9, 3.540205529067503*^9, 
+   3.540205564388157*^9, 3.540205653040236*^9, 3.540205690764685*^9, {
+   3.540205727851908*^9, 3.540205750144708*^9}, 3.540205789641609*^9, 
+   3.540205827884375*^9, 3.540205913833294*^9, 3.540205959110505*^9, {
+   3.540206033947762*^9, 3.540206061536194*^9}, 3.540224618846065*^9, 
+   3.540224671952591*^9, {3.54022470911649*^9, 3.540224850636597*^9}, {
+   3.540224885759632*^9, 3.540224925015568*^9}, 3.540224958212721*^9, 
+   3.540224988462996*^9, 3.540225046182037*^9, {3.540225120995101*^9, 
+   3.540225128726629*^9}, 3.540225189402118*^9, {3.540225228590037*^9, 
+   3.540225267773338*^9}, {3.540225379129289*^9, 3.540225396158512*^9}, {
+   3.540225548310221*^9, 3.540225559370048*^9}, {3.540225799924435*^9, 
+   3.540225900272768*^9}, {3.540225931973861*^9, 3.540225938801466*^9}, 
+   3.540226049610593*^9, {3.54022632656028*^9, 3.54022635980719*^9}, 
+   3.540226447802415*^9, 3.540316527090269*^9, 3.540316613902283*^9, {
+   3.540316658536854*^9, 3.540316668606144*^9}, {3.540316706226814*^9, 
+   3.540316733557219*^9}, {3.540317255773742*^9, 3.540317309082762*^9}, 
+   3.540318071131342*^9, 3.540318105884975*^9, 3.54032663997157*^9, 
+   3.540337081741965*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "nffil"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"File not found during \[NoBreak]\\!\\(Import\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/nffil\\\", \
+ButtonNote -> \\\"Import::nffil\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081948452*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "nffil"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"File not found during \[NoBreak]\\!\\(Import\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/nffil\\\", \
+ButtonNote -> \\\"Import::nffil\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.54033708195075*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Transpose", "::", "nmtx"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The first two levels of the one-dimensional list \
+\[NoBreak]\\!\\({}\\)\[NoBreak] cannot be transposed. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Transpose/nmtx\\\", ButtonNote -> \
+\\\"Transpose::nmtx\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081953844*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Transpose", "::", "nmtx"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The first two levels of the one-dimensional list \
+\[NoBreak]\\!\\({}\\)\[NoBreak] cannot be transposed. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Transpose/nmtx\\\", ButtonNote -> \
+\\\"Transpose::nmtx\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081956464*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Transpose[\\(\\({}\\)\\)]\\)\[NoBreak] does not exist. \\!\\(\
+\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.54033708195911*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Transpose[\\(\\({}\\)\\)]\\)\[NoBreak] does not exist. \\!\\(\
+\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081961571*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "pspec"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \
+\[NoBreak]\\!\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\[NoBreak] is \
+neither an integer nor a list of integers. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/pspec\\\", ButtonNote -> \
+\\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081964284*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "pspec"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \
+\[NoBreak]\\!\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\[NoBreak] is \
+neither an integer nor a list of integers. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/pspec\\\", ButtonNote -> \
+\\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.5403370819665728`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "pspec"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(20 + Psatminleft\\)\
+\[NoBreak] is neither an integer nor a list of integers. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/pspec\\\", \
+ButtonNote -> \\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081968921*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "pspec"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(20 + Psatminright\\)\
+\[NoBreak] is neither an integer nor a list of integers. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/pspec\\\", \
+ButtonNote -> \\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081970792*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "pspec"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(20 + Psunminleft\\)\
+\[NoBreak] is neither an integer nor a list of integers. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/pspec\\\", \
+ButtonNote -> \\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081972067*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "pspec"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part specification \[NoBreak]\\!\\(20 + Psunminright\\)\
+\[NoBreak] is neither an integer nor a list of integers. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/pspec\\\", \
+ButtonNote -> \\\"Part::pspec\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337081973232*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082096466*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082104046*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082109226*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082112023*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082113756*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Transpose[\\(\\({}\\)\\)]\\)\[NoBreak] does not exist. \\!\\(\
+\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082114975*^9}],
+
+Cell[BoxData[
+ GraphicsBox[GraphicsComplexBox[{{1., 10.}, {1., 10.}}, {{}, 
+    {Hue[0.67, 0.6, 0.6], PointBox[{2}]}, {}}],
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{
+    FormBox["\"Time (0.1 s)\"", TraditionalForm], 
+    FormBox["\"  P(t) (mW)\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  Background->RGBColor[1, 1, 0.85],
+  LabelStyle->Directive[Bold, Medium],
+  PlotLabel->FormBox["\"SAT Single Dish \"", TraditionalForm],
+  PlotRange->{{0., 2.}, {0., 20.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{
+  3.540205362219764*^9, 3.540205402653493*^9, 3.540205529067503*^9, 
+   3.540205564388157*^9, 3.540205653040236*^9, 3.540205690764685*^9, {
+   3.540205727851908*^9, 3.540205750144708*^9}, 3.540205789641609*^9, 
+   3.540205827884375*^9, 3.540205913833294*^9, 3.540205959110505*^9, {
+   3.540206033947762*^9, 3.540206061536194*^9}, 3.540224618846065*^9, 
+   3.540224671952591*^9, {3.54022470911649*^9, 3.540224850636597*^9}, {
+   3.540224885759632*^9, 3.540224925015568*^9}, 3.540224958212721*^9, 
+   3.540224988462996*^9, 3.540225046182037*^9, {3.540225120995101*^9, 
+   3.540225128726629*^9}, 3.540225189402118*^9, {3.540225228590037*^9, 
+   3.540225267773338*^9}, {3.540225379129289*^9, 3.540225396158512*^9}, {
+   3.540225548310221*^9, 3.540225559370048*^9}, {3.540225799924435*^9, 
+   3.540225900272768*^9}, {3.540225931973861*^9, 3.540225938801466*^9}, 
+   3.540226049610593*^9, {3.54022632656028*^9, 3.54022635980719*^9}, 
+   3.540226447802415*^9, 3.540316527090269*^9, 3.540316613902283*^9, {
+   3.540316658536854*^9, 3.540316668606144*^9}, {3.540316706226814*^9, 
+   3.540316733557219*^9}, {3.540317255773742*^9, 3.540317309082762*^9}, 
+   3.540318071131342*^9, 3.540318105884975*^9, 3.54032663997157*^9, 
+   3.540337082122028*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ListPlot", "::", "lpn"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a list of numbers or pairs of numbers. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/ListPlot\\\", ButtonNote -> \
+\\\"ListPlot::lpn\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.54033708212323*^9}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "Tsatpow", "\[LeftDoubleBracket]", "k", "\[RightDoubleBracket]"}], 
+      "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", 
+       RowBox[{
+        RowBox[{"-", "satcut"}], "+", 
+        RowBox[{"Floor", "[", 
+         RowBox[{"Median", "[", 
+          RowBox[{"{", "}"}], "]"}], "]"}]}], ",", 
+       RowBox[{"satcut", "+", 
+        RowBox[{"Floor", "[", 
+         RowBox[{"Median", "[", 
+          RowBox[{"{", "}"}], "]"}], "]"}]}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"Background", "\[Rule]", 
+    RowBox[{"RGBColor", "[", 
+     RowBox[{"1", ",", "1", ",", "0.85`"}], "]"}]}], ",", 
+   RowBox[{"FillingStyle", "\[Rule]", 
+    RowBox[{"Directive", "[", 
+     RowBox[{
+      RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], ",", 
+   RowBox[{"Filling", "\[Rule]", "Axis"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"Time (0.1 s)\"\>", ",", "\<\" P(t) (mW)\"\>"}], "}"}]}], 
+   ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\<\"SAT - Single Dish\"\>"}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", 
+    RowBox[{"Directive", "[", 
+     RowBox[{"Bold", ",", "Medium"}], "]"}]}]}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.540205362219764*^9, 3.540205402653493*^9, 3.540205529067503*^9, 
+   3.540205564388157*^9, 3.540205653040236*^9, 3.540205690764685*^9, {
+   3.540205727851908*^9, 3.540205750144708*^9}, 3.540205789641609*^9, 
+   3.540205827884375*^9, 3.540205913833294*^9, 3.540205959110505*^9, {
+   3.540206033947762*^9, 3.540206061536194*^9}, 3.540224618846065*^9, 
+   3.540224671952591*^9, {3.54022470911649*^9, 3.540224850636597*^9}, {
+   3.540224885759632*^9, 3.540224925015568*^9}, 3.540224958212721*^9, 
+   3.540224988462996*^9, 3.540225046182037*^9, {3.540225120995101*^9, 
+   3.540225128726629*^9}, 3.540225189402118*^9, {3.540225228590037*^9, 
+   3.540225267773338*^9}, {3.540225379129289*^9, 3.540225396158512*^9}, {
+   3.540225548310221*^9, 3.540225559370048*^9}, {3.540225799924435*^9, 
+   3.540225900272768*^9}, {3.540225931973861*^9, 3.540225938801466*^9}, 
+   3.540226049610593*^9, {3.54022632656028*^9, 3.54022635980719*^9}, 
+   3.540226447802415*^9, 3.540316527090269*^9, 3.540316613902283*^9, {
+   3.540316658536854*^9, 3.540316668606144*^9}, {3.540316706226814*^9, 
+   3.540316733557219*^9}, {3.540317255773742*^9, 3.540317309082762*^9}, 
+   3.540318071131342*^9, 3.540318105884975*^9, 3.54032663997157*^9, 
+   3.540337082124925*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082128699*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082130054*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsunpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082131276*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Transpose[\\(\\({}\\)\\)]\\)\[NoBreak] does not exist. \\!\\(\
+\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082132569*^9}],
+
+Cell[BoxData[
+ GraphicsBox[GraphicsComplexBox[{{1., 10.}, {1., 10.}}, {{}, 
+    {Hue[0.67, 0.6, 0.6], PointBox[{2}]}, {}}],
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{
+    FormBox["\"Time (0.1 s)\"", TraditionalForm], 
+    FormBox["\"  P(t) (mW)\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  Background->RGBColor[1, 1, 0.85],
+  LabelStyle->Directive[Bold, Medium],
+  PlotLabel->FormBox["\"SUN - Single Dish\"", TraditionalForm],
+  PlotRange->{{0., 2.}, {0., 20.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{
+  3.540205362219764*^9, 3.540205402653493*^9, 3.540205529067503*^9, 
+   3.540205564388157*^9, 3.540205653040236*^9, 3.540205690764685*^9, {
+   3.540205727851908*^9, 3.540205750144708*^9}, 3.540205789641609*^9, 
+   3.540205827884375*^9, 3.540205913833294*^9, 3.540205959110505*^9, {
+   3.540206033947762*^9, 3.540206061536194*^9}, 3.540224618846065*^9, 
+   3.540224671952591*^9, {3.54022470911649*^9, 3.540224850636597*^9}, {
+   3.540224885759632*^9, 3.540224925015568*^9}, 3.540224958212721*^9, 
+   3.540224988462996*^9, 3.540225046182037*^9, {3.540225120995101*^9, 
+   3.540225128726629*^9}, 3.540225189402118*^9, {3.540225228590037*^9, 
+   3.540225267773338*^9}, {3.540225379129289*^9, 3.540225396158512*^9}, {
+   3.540225548310221*^9, 3.540225559370048*^9}, {3.540225799924435*^9, 
+   3.540225900272768*^9}, {3.540225931973861*^9, 3.540225938801466*^9}, 
+   3.540226049610593*^9, {3.54022632656028*^9, 3.54022635980719*^9}, 
+   3.540226447802415*^9, 3.540316527090269*^9, 3.540316613902283*^9, {
+   3.540316658536854*^9, 3.540316668606144*^9}, {3.540316706226814*^9, 
+   3.540316733557219*^9}, {3.540317255773742*^9, 3.540317309082762*^9}, 
+   3.540318071131342*^9, 3.540318105884975*^9, 3.54032663997157*^9, 
+   3.540337082134229*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ListPlot", "::", "lpn"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsunpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a list of numbers or pairs of numbers. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/ListPlot\\\", ButtonNote -> \
+\\\"ListPlot::lpn\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082145734*^9}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "Tsunpow", "\[LeftDoubleBracket]", "k", "\[RightDoubleBracket]"}], 
+      "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", 
+       RowBox[{
+        RowBox[{"-", "suncut"}], "+", 
+        RowBox[{"Floor", "[", 
+         RowBox[{"Median", "[", 
+          RowBox[{"{", "}"}], "]"}], "]"}]}], ",", 
+       RowBox[{"suncut", "+", 
+        RowBox[{"Floor", "[", 
+         RowBox[{"Median", "[", 
+          RowBox[{"{", "}"}], "]"}], "]"}]}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"Background", "\[Rule]", 
+    RowBox[{"RGBColor", "[", 
+     RowBox[{"1", ",", "1", ",", "0.85`"}], "]"}]}], ",", 
+   RowBox[{"FillingStyle", "\[Rule]", 
+    RowBox[{"Directive", "[", 
+     RowBox[{
+      RowBox[{"Opacity", "[", "0.7`", "]"}], ",", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], ",", 
+   RowBox[{"Filling", "\[Rule]", "Axis"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"Time (0.1 s)\"\>", ",", "\<\" P(t) (mW)\"\>"}], "}"}]}], 
+   ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\<\"SUN - Single Dish\"\>"}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", 
+    RowBox[{"Directive", "[", 
+     RowBox[{"Bold", ",", "Medium"}], "]"}]}]}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.540205362219764*^9, 3.540205402653493*^9, 3.540205529067503*^9, 
+   3.540205564388157*^9, 3.540205653040236*^9, 3.540205690764685*^9, {
+   3.540205727851908*^9, 3.540205750144708*^9}, 3.540205789641609*^9, 
+   3.540205827884375*^9, 3.540205913833294*^9, 3.540205959110505*^9, {
+   3.540206033947762*^9, 3.540206061536194*^9}, 3.540224618846065*^9, 
+   3.540224671952591*^9, {3.54022470911649*^9, 3.540224850636597*^9}, {
+   3.540224885759632*^9, 3.540224925015568*^9}, 3.540224958212721*^9, 
+   3.540224988462996*^9, 3.540225046182037*^9, {3.540225120995101*^9, 
+   3.540225128726629*^9}, 3.540225189402118*^9, {3.540225228590037*^9, 
+   3.540225267773338*^9}, {3.540225379129289*^9, 3.540225396158512*^9}, {
+   3.540225548310221*^9, 3.540225559370048*^9}, {3.540225799924435*^9, 
+   3.540225900272768*^9}, {3.540225931973861*^9, 3.540225938801466*^9}, 
+   3.540226049610593*^9, {3.54022632656028*^9, 3.54022635980719*^9}, 
+   3.540226447802415*^9, 3.540316527090269*^9, 3.540316613902283*^9, {
+   3.540316658536854*^9, 3.540316668606144*^9}, {3.540316706226814*^9, 
+   3.540316733557219*^9}, {3.540317255773742*^9, 3.540317309082762*^9}, 
+   3.540318071131342*^9, 3.540318105884975*^9, 3.54032663997157*^9, 
+   3.540337082147323*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082148945*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsunpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082150189*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082151481*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082152683*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082153968*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Table :: \
+iterb\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082155244*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsunpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082156871*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Fourier \
+:: fftl\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082158172*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Abs[\\(\\(Fourier[\\(\\(Table[\\(\\(\\(\\(\\(\\(Tsunpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\\\
+)]\\)\\)]\\)\[NoBreak] does not exist. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082159541*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Abs[\\(\\(Fourier[\\(\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\\\
+)]\\)\\)]\\)\[NoBreak] does not exist. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.54033708216083*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Abs[\\(\\(Fourier[\\(\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(-satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\\\
+)]\\)\\)]\\)\[NoBreak] does not exist. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082162055*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Part :: \
+partw\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082163445*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \
+\\(\\(\\(\\(\\(\\(-1.`\\)\\)\\\\ satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082164855*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(\\(\\(-1.`\\)\\)\\\\ \
+satcut\\)\\) + \\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \
+\\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082166122*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \
+\\(\\(\\(\\(\\(\\(-1.`\\)\\)\\\\ suncut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082167437*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsunpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(\\(\\(-1.`\\)\\)\\\\ \
+suncut\\)\\) + \\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \
+\\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082168849*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Table", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({k, \
+\\(\\(\\(\\(\\(\\(-1.`\\)\\)\\\\ satcut\\)\\) + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\[NoBreak] \
+does not have appropriate bounds. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/iterb\\\", \
+ButtonNote -> \\\"Table::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082170227*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Table :: \
+iterb\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082171469*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Fourier", "::", "fftl"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Argument \[NoBreak]\\!\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(\\(\\(-1.`\\)\\)\\\\ \
+satcut\\)\\) + \\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \
+\\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\
+\[NoBreak] is not a non-empty list or rectangular array of numeric \
+quantities. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Fourier/fftl\\\", ButtonNote -> \
+\\\"Fourier::fftl\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082172647*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(Fourier \
+:: fftl\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this \
+calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082174137*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Abs[\\(\\(Fourier[\\(\\(Table[\\(\\(\\(\\(\\(\\(Tsatpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(\\(\\(-1.`\\)\\)\\\\ \
+satcut\\)\\) + \\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \
+\\(\\(satcut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\\\
+)]\\)\\)]\\)\[NoBreak] does not exist. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082175959*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(2\\)\[NoBreak] of \
+\[NoBreak]\\!\\(Abs[\\(\\(Fourier[\\(\\(Table[\\(\\(\\(\\(\\(\\(Tsunpow \
+\[LeftDoubleBracket] k \[RightDoubleBracket]\\)\\) \[LeftDoubleBracket] 2 \
+\[RightDoubleBracket]\\)\\), \\(\\({k, \\(\\(\\(\\(\\(\\(-1.`\\)\\)\\\\ \
+suncut\\)\\) + \\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\), \
+\\(\\(suncut + \
+\\(\\(Floor[\\(\\(Median[\\(\\({}\\)\\)]\\)\\)]\\)\\)\\)\\)}\\)\\)\\)\\)]\\)\\\
+)]\\)\\)]\\)\[NoBreak] does not exist. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.540337082177294*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{
+    FormBox["\"freq\"", TraditionalForm], 
+    FormBox["\"  FFT\"", TraditionalForm]},
+  AxesOrigin->{0, 0},
+  Background->RGBColor[1, 1, 0.85],
+  LabelStyle->Directive[Bold, Medium],
+  PlotLabel->FormBox[
+   "\"Single Dish Fourier Compoent Sun/Sat\"", TraditionalForm],
+  PlotRange->{{0., 0.}, {0., 0.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{
+  3.540205362219764*^9, 3.540205402653493*^9, 3.540205529067503*^9, 
+   3.540205564388157*^9, 3.540205653040236*^9, 3.540205690764685*^9, {
+   3.540205727851908*^9, 3.540205750144708*^9}, 3.540205789641609*^9, 
+   3.540205827884375*^9, 3.540205913833294*^9, 3.540205959110505*^9, {
+   3.540206033947762*^9, 3.540206061536194*^9}, 3.540224618846065*^9, 
+   3.540224671952591*^9, {3.54022470911649*^9, 3.540224850636597*^9}, {
+   3.540224885759632*^9, 3.540224925015568*^9}, 3.540224958212721*^9, 
+   3.540224988462996*^9, 3.540225046182037*^9, {3.540225120995101*^9, 
+   3.540225128726629*^9}, 3.540225189402118*^9, {3.540225228590037*^9, 
+   3.540225267773338*^9}, {3.540225379129289*^9, 3.540225396158512*^9}, {
+   3.540225548310221*^9, 3.540225559370048*^9}, {3.540225799924435*^9, 
+   3.540225900272768*^9}, {3.540225931973861*^9, 3.540225938801466*^9}, 
+   3.540226049610593*^9, {3.54022632656028*^9, 3.54022635980719*^9}, 
+   3.540226447802415*^9, 3.540316527090269*^9, 3.540316613902283*^9, {
+   3.540316658536854*^9, 3.540316668606144*^9}, {3.540316706226814*^9, 
+   3.540316733557219*^9}, {3.540317255773742*^9, 3.540317309082762*^9}, 
+   3.540318071131342*^9, 3.540318105884975*^9, 3.54032663997157*^9, 
+   3.540337082178743*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.54022640005392*^9, 3.540226408845871*^9}, 
+   3.540226444201719*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.540205045131506*^9, 3.540205059254821*^9}}]
+},
+WindowSize->{1364, 710},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Linux x86 (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 23368, 547, 1752, "Input"],
+Cell[23950, 571, 1290, 19, 30, "Output"],
+Cell[25243, 592, 438, 9, 24, "Message"],
+Cell[25684, 603, 437, 9, 24, "Message"],
+Cell[26124, 614, 490, 10, 24, "Message"],
+Cell[26617, 626, 490, 10, 24, "Message"],
+Cell[27110, 638, 487, 10, 24, "Message"],
+Cell[27600, 650, 488, 10, 24, "Message"],
+Cell[28091, 662, 516, 11, 24, "Message"],
+Cell[28610, 675, 518, 11, 24, "Message"],
+Cell[29131, 688, 489, 10, 24, "Message"],
+Cell[29623, 700, 490, 10, 24, "Message"],
+Cell[30116, 712, 489, 10, 24, "Message"],
+Cell[30608, 724, 490, 10, 24, "Message"],
+Cell[31101, 736, 625, 12, 24, "Message"],
+Cell[31729, 750, 625, 12, 24, "Message"],
+Cell[32357, 764, 820, 15, 24, "Message"],
+Cell[33180, 781, 625, 12, 24, "Message"],
+Cell[33808, 795, 820, 15, 24, "Message"],
+Cell[34631, 812, 488, 10, 24, "Message"],
+Cell[35122, 824, 1868, 35, 223, "Output"],
+Cell[36993, 861, 774, 14, 24, "Message"],
+Cell[37770, 877, 2654, 56, 69, "Output"],
+Cell[40427, 935, 625, 12, 24, "Message"],
+Cell[41055, 949, 625, 12, 24, "Message"],
+Cell[41683, 963, 820, 15, 24, "Message"],
+Cell[42506, 980, 488, 10, 24, "Message"],
+Cell[42997, 992, 1869, 35, 223, "Output"],
+Cell[44869, 1029, 775, 14, 24, "Message"],
+Cell[45647, 1045, 2654, 56, 69, "Output"],
+Cell[48304, 1103, 625, 12, 24, "Message"],
+Cell[48932, 1117, 820, 15, 24, "Message"],
+Cell[49755, 1134, 625, 12, 24, "Message"],
+Cell[50383, 1148, 820, 15, 24, "Message"],
+Cell[51206, 1165, 625, 12, 24, "Message"],
+Cell[51834, 1179, 529, 11, 24, "Message"],
+Cell[52366, 1192, 820, 15, 24, "Message"],
+Cell[53189, 1209, 530, 11, 24, "Message"],
+Cell[53722, 1222, 833, 15, 24, "Message"],
+Cell[54558, 1239, 832, 15, 24, "Message"],
+Cell[55393, 1256, 833, 15, 24, "Message"],
+Cell[56229, 1273, 528, 11, 24, "Message"],
+Cell[56760, 1286, 647, 13, 24, "Message"],
+Cell[57410, 1301, 842, 16, 24, "Message"],
+Cell[58255, 1319, 647, 13, 24, "Message"],
+Cell[58905, 1334, 842, 16, 24, "Message"],
+Cell[59750, 1352, 647, 13, 24, "Message"],
+Cell[60400, 1367, 529, 11, 24, "Message"],
+Cell[60932, 1380, 842, 16, 24, "Message"],
+Cell[61777, 1398, 530, 11, 24, "Message"],
+Cell[62310, 1411, 855, 16, 24, "Message"],
+Cell[63168, 1429, 855, 16, 24, "Message"],
+Cell[64026, 1447, 1784, 35, 253, "Output"]
+}, Open  ]],
+Cell[65825, 1485, 117, 2, 30, "Input"],
+Cell[65945, 1489, 92, 1, 30, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
