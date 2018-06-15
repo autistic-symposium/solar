@@ -1,4 +1,4 @@
-# Radion Interferometry to Measure the Angular Diameter of Sun
+#  🌜Radio Interferometry to Measure the Angular Diameter of Sun 🌜
 
 Reads data from the ascii files produced by the experiment and
 creates a root files with analysis in output/ and histograms in plots/.
