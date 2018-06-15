@@ -3,6 +3,8 @@
 Reads data from the ascii files produced by the experiment and
 creates a root files with analysis in output/ and histograms in plots/.
 
+![](sun.png)
+
 To run in ROOT type:
 
 ```
