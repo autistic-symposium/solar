@@ -1,25 +1,18 @@
-#  🌜Radio Interferometry to Measure the Angular Diameter of Sun 🌜
+## radio interferometry to measure the angular diameter of sun
 
-Reads data from the ascii files produced by the experiment and
-creates a root files with analysis in output/ and histograms in plots/.
+<br>
 
-![](sun.png)
+<p align="center">
+<img height="300" src="sun.png">
+</p>
 
-To run in ROOT type:
+<br>
+
+* this project can be used to read data from ascii files produced by the experimental setup and then run the analysis (to `output/`) and its histograms (to `plots/`)
+
+* run in ROOT with:
 
 ```
-$ root -b -q DataRedux.C
-$ root -b -q DataAna.C
+root -b -q DataRedux.C
+root -b -q DataAna.C
 ```
-
-
-----
-
-
-## License
-
-When making a reference to my work, please use my [website](http://bt3gl.github.io/index.html).
-
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />
-
-This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
